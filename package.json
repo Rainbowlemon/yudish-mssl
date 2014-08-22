@@ -1,0 +1,10 @@
+{
+  "name": "yudish-mssl",
+  "version": "0.0.0",
+  "description": "Yudish's MSL website",
+  "author": "Aidan Jalali <aidanjalali@gmail.com>",
+  "devDependencies": {
+        "grunt-contrib-sass": "^0",
+        "grunt-contrib-watch": "^0"
+    }
+}
