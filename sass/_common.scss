@@ -1,3 +1,5 @@
+$serif: "Lora", "Times New Roman", serif;
+
 html,
 body {
     border: 0;
@@ -6,31 +8,196 @@ body {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 16px;
     color: #555;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 h1,h2,h3,
 h4,h5,h6 {
     color: #0e0e0e;
     font-weight: 400;
-    font-family: "Lora", "Times New Roman", serif;
-    margin: .2em 0 .6em;
+    font-family: $serif;
+    margin: .2em 0 .7em;
+}
+
+h1 {
+    font-size: 2.4em;
+}
+
+h4 {
+    color: #777;
 }
 
 p {
-    margin: .5em 0 2em;
+    margin: .5em 0 1.5em;
     line-height: 2;
 }
 
+ul {
+    margin-bottom: 1.5em;
+}
+
+li {
+    margin-bottom: .6em;
+}
+
 a {
+    color: #309ae5;
+    
     &:hover,
     &:focus {
         text-decoration: none;
     }
+    
+    &:visited {
+        color: #266c9f;
+    }
 }
+
+#page-header {
+    background: #0e0e0e url(../img/header-bg.jpg) 50% 90%;
+    overflow: hidden;
+    color: #fff;
+    
+    h1, h2, a {
+        color: #fff;
+    }
+    
+    h1 {
+        margin: 1.5em 0 0;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+    
+    p {
+        margin: 1.5em 0 5em;
+    }
+    
+    a {
+        white-space: nowrap;
+    }
+    
+    .separator {
+        margin: 0 0.6em;
+    }
+    
+    svg {
+        display: inline-block;
+        text-decoration: none;
+        vertical-align: middle;
+        margin-right: .4em;
+    }
+    
+    .wrap {
+        background: url(../img/ucl-logo.png) no-repeat right bottom;
+        background-size: 190px 54px;
+    }
+}
+
+#page-nav {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 3em;
+    text-align: center;
+    left: 0px;
+    width: 100%;
+    position: relative;
+    background: #fff;
+    box-shadow: 0 2px 6px RGBA(0,0,0,0);
+    
+    transition: box-shadow 0.2s linear;
+    
+    &.isStuck {
+        position: fixed;
+        top: 0;
+        box-shadow: 0 6px 8px RGBA(0,0,0,0.1);
+    }
+    
+    ul {
+        padding: 0;
+    }
+    
+    li {
+        display: inline-block;
+        margin: 0;
+    }
+    
+    a {
+        padding: 1.1em 2em 1.3em;
+        text-decoration: none;
+        color: #999;
+        display: block;
+        font-size: 1.1em;
+        position: relative;
+        
+        transition: color 0.2s linear;
+        
+        &:hover,
+        &:focus {
+            color: #0e0e0e;
+        }
+        
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            background: #0e0e0e;
+            
+            transition: height 0.2s ease;
+        }
+        
+        &.active {
+            color: #0e0e0e;
+            
+            &:after {
+                height: 5px;
+            }
+        }
+    }
+}
+
+main {
+    > article {
+        display: none;
+        
+        &.active-page {
+            display: block;
+        }
+    }
+}
+
+article > section {
+    margin-bottom: 1.4em;
+    overflow: hidden;
+}
+
+
+#page-footer {
+    font-size: 70%;
+    border-top: 1px dotted #ccc;
+    padding: 2em 0 4em;
+    margin-top: 5em;
+    
+    address {
+        white-space: pre-line;
+        float: left;
+        width: 50%;
+    }
+    
+    p {
+        margin-top: 0;
+        text-align: right;
+    }
+}
+
+
+/* Shared class styles */
 
 .clearfix:after {
     content: "";
@@ -54,32 +221,22 @@ a {
     }
 }
 
-#page-header {
-    background: #0e0e0e url(../img/header-bg.jpg) 50% 90%;
+.timeline {
     overflow: hidden;
-    margin-bottom: 3em;
     
-    h1, h2, a {
-        color: #fff;
+    dt {
+        float: left;
+        clear: left;
+        width: 100px;
+        color: #777;
+        text-align: right;
     }
     
-    h1 {
-        margin: 1.5em 0 0;
-    }
-    
-    h2 {
-        font-size: 1.2em;
-    }
-    
-    p {
-        margin: 1.5em 0 3em;
-    }
-    
-    .wrap {
-        background: url(../img/ucl-logo.png) no-repeat right bottom;
-        background-size: 190px 54px;
-    }
-    img {
-        float: right;
+    dd {
+        margin-left: 120px;
+        padding-left: 1.2em;
+        padding-bottom: .5em;
+        margin-bottom: 1.5em;
+        border-left: 1px solid #ddd;
     }
 }
