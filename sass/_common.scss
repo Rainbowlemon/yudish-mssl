@@ -60,6 +60,17 @@ a {
     }
 }
 
+figure img {
+    margin-bottom: 0 !important;
+}
+
+figcaption {
+    background: #0e0e0e;
+    color: #fff;
+    padding: 0.8em 1em;
+    font-size: 0.8em;
+}
+
 #page-header {
     background: #0e0e0e url(../img/header-bg.jpg) 50% 90%;
     overflow: hidden;

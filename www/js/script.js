@@ -1,28 +1,37 @@
 var app = function(){};
 
-app.prototype.setupRouter = function(){
-    var processHash = function(){
-        var hash = location.hash || '#home';
-        var activeClass = hash.substr(1) + '-page';
-        var $nav = $('#page-nav');
-        
-        $('.active-page').removeClass('active-page');
-        $nav.find('.active').removeClass('active');
-        
-        var $target = $('#' + activeClass),
-            $targetNav = $nav.find('a[href="'+ hash +'"]');
-        
-        if ($target.length === 0) {
-            $('#error-page').addClass('active-page');
-        } else {
-            $target.addClass('active-page');
-            $targetNav.addClass('active');
-        }
-        document.body.className = activeClass;
-    };
+app.prototype.onHashChange = function(){
+    var hash = location.hash || '#home';
+    var activeClass = hash.substr(1) + '-page';
+    var $nav = $('#page-nav');
+
+    $('.active-page').removeClass('active-page');
+    $nav.find('.active').removeClass('active');
+
+    var $target = $('#' + activeClass),
+        $targetNav = $nav.find('a[href="'+ hash +'"]');
+
+    if ($target.length === 0) {
+        $('#error-page').addClass('active-page');
+    } else {
+        $target.addClass('active-page');
+        $targetNav.addClass('active');
+    }
+    document.body.className = activeClass;
     
-    window.addEventListener('hashchange', processHash);
-    processHash();
+    //Now scroll to top if not already at top
+    if ($nav.hasClass('isStuck')) {
+        setTimeout(function(){
+            $('html,body').animate({
+                'scrollTop': $nav.data('offset')
+            }, 250);
+        },3);
+    }
+};
+
+app.prototype.setupRouter = function(){
+    window.addEventListener('hashchange', this.onHashChange.bind(this));
+    this.onHashChange();
 };
 
 app.prototype.moveNav = function(){
