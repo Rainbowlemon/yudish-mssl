@@ -26,6 +26,10 @@ h1 {
     font-size: 2.4em;
 }
 
+h2 + img {
+    margin-top: 0 !important;
+}
+
 h4 {
     color: #777;
 }
@@ -172,9 +176,14 @@ main {
     }
 }
 
-article > section {
+section {
     margin-bottom: 1.4em;
     overflow: hidden;
+    
+    img {
+        margin: 1em 0;
+        display: block;
+    }
 }
 
 
@@ -198,6 +207,17 @@ article > section {
 
 
 /* Shared class styles */
+
+.float-l { float: left; }
+img.float-l { margin-right: 1em; }
+
+.float-r { float: right; }
+img.float-r { margin-left: 1em; }
+
+.full-width {
+    width: 100%;
+    height: auto;
+}
 
 .clearfix:after {
     content: "";

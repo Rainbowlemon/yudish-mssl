@@ -29,4 +29,26 @@
             }
         }
     }
+    
+    .timeline {
+        border-left: 1px solid #ccc;
+        
+        dt {
+            float: none;
+            width: auto;
+            text-align: left;
+            padding-left: 15px;
+            background: #BBB;
+            color: #FFF;
+            display: inline-block;
+            padding-right: 20px;
+            margin-bottom: 0.8em;
+            border-radius: 0 20px 0 0;
+        }
+        dd {
+            border-left: 0;
+            padding-left: 15px;
+            margin-left: 0;
+        }
+    }
 }
