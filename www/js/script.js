@@ -44,7 +44,7 @@ app.prototype.moveNav = function(){
         $nav.data('offset', $nav.offset().top);
     }
     
-    if (windowY > $nav.data('offset')) {
+    if (windowY > $nav.data('offset') && !$('html').hasClass('mobile')) {
         $main.css('marginTop', $nav.data('height'));
         $nav.addClass('isStuck');
     } else {
@@ -53,12 +53,28 @@ app.prototype.moveNav = function(){
     }
 };
 
-app.prototype.scrollTriggered = function(e){
+app.prototype.setMediaClass = function(){
+    var width = $(window).outerWidth();
+    
+    if (width < 500){
+        $('html').addClass('mobile');
+    } else {
+        $('html').removeClass('mobile');
+    }
+};
+
+app.prototype.scrollTriggered = function(){
      this.moveNav();
+};
+
+app.prototype.resizeTriggered = function(e) {
+    this.setMediaClass();
 };
 
 app.prototype.bindEvents = function(){
     $(document).on('scroll', this.scrollTriggered.bind(this));
+    $(window).on('resize', this.resizeTriggered.bind(this));
+    this.resizeTriggered();
 };
 
 app.prototype.init = function(){
